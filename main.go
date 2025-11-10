@@ -28,7 +28,8 @@ func main() {
 	// 🌐 Middleware CORS (permite acesso do React)
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{
-			"http://localhost:3000", // frontend React local
+			"http://localhost:3000",              // frontend React local
+			"https://doutor-frontend.vercel.app", // Frontend no Vercel
 		},
 		AllowMethods: []string{
 			http.MethodGet,
