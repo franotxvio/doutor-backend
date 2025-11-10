@@ -1,0 +1,29 @@
+
+
+services:
+  app:
+    build: .
+    container_name: awesome_api
+    ports:
+      - "8081:8080"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: postgres:15
+    container_name: awesome_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: hoot
+      POSTGRES_DB: meu_banco
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  db_data:
